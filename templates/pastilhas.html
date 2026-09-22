@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Nova Pastilha
+</button>
+
+<!--Cadastro de NOVA PASTILHA-->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"><strong>Nova Pastilha</strong></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-cadastro2" action="{{ url_for('pastilhas')}}" method="post">
+                    <label for="input_aplicacao">Aplicação/Uso:</label>
+                    <input id="input_aplicacao" placeholder="Digite a aplicação" type="text" name="form-uso"
+                           class="form-control w-100">
+
+                    <label for="input_material">Material:</label>
+                    <input id="input_material" placeholder="Digite o material" type="text" name="form-material"
+                           class="form-control w-100">
+
+                    <label for="input_cor"> Cor: </label>
+                    <input id="input_cor" placeholder="Digite a cor" type="text" name="form-cor"
+                           class="form-control w-100">
+
+                    <label for="menu_fabricante">Fabricante:</label>
+                    <select id="menu_fabricante">
+                        <optgroup>
+                            <option>1</option>
+                            <option>2</option>
+                        </optgroup>
+                    </select>
+
+                   <label for="menu_fornecedor">Fornecedor:</label>
+                    <select id="menu_fornecedor">
+                        <optgroup>
+                            <option>1</option>
+                            <option>2</option>
+                        </optgroup>
+                    </select>
+
+                    <button type="submit" class="btn btn-info">Cadastrar</button>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Aplicação/Uso</th>
+        <th scope="col">Material</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Fabricante</th>
+        <th scope="col">Fornecedor</th>
+    </tr>
+    </thead>
+</table>
+
+
+{% endblock %}

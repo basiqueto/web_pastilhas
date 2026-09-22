@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cambria Math";
+    background-color: #9899a6;
+}
+
+.main {
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: clip;
+}
+
+.conteudo {
+    height: calc(100vh - 100px)
+}
+
+.menu {
+    /* Linha fina clara na parte inferior do menu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    height: 100px;
+    display: flex;
+}
+
+
+.menu ul {
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+
+.menu ul li img {
+    align-self: flex-end;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: #967200;
+    padding: 15px;
+    margin: 50px;
+    border-radius: 5px;
+}
+
+.frase {
+    font-family: "Cambria Math";
+    font-size: 30px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: calc(100vh - 100px);
+    justify-content: center;
+
+}
+
+h2 {
+    color: #2d304d;
+}
+
+label {
+    display: flex;
+    width: 100%;
+}
+
+.form-login2 {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
+    width: 100%;
+    align-items: center;
+}
+
+.form-btn2 {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
+}
+
+.pai_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.card_login {
+    display: flex;
+    width: 290px;
+    height: 380px;
+    background-color: darkgrey;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn1 {
+    background-color: dodgerblue;
+    height: 35px;
+    width: 200px;
+    border-radius: 10px;
+
+}
+
+.btn2 {
+    background-color: brown;
+    height: 35px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+p {
+    text-align: center;
+}
+

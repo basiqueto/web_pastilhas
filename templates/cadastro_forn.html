@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="pai_login">
+    <div class="card_login">
+        <form id="form-login" class="form-login2" action="{{ url_for('login') }}" method="post">
+            <h3><strong>Cadastro Fornecedor</strong></h3>
+            <label for="input_empresa"> <strong>Nome da Empresa:</strong> </label>
+            <input id="input_empresa" placeholder="Digite o nome da empresa" type="text" name="form-empresa" class="form-control w-100">
+
+            <label for="input_email"><strong>Email:</strong></label>
+            <input id="input_email" placeholder="Digite o email" type="text" name="form-email"
+                   class="form-control w-100">
+
+            <label for="input_cnpj"><strong>CNPJ:</strong></label>
+            <input id="input_cnpj" placeholder="Digite o CNPJ" type="number" name="form-cnpj"
+                   class="form-control w-100">
+
+
+            <button type="submit" class="btn1 btn-info"><i class="bi bi-box-arrow-in-right"></i> Cadastrar</button>
+            <!--            <a class="btn btn-danger" onclick="limpaInputsLogin()">Limpar</a>-->
+            <br>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

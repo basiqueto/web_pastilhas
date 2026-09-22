@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="pai_login">
+    <div class="card_login">
+        <form id="form-login" class="form-login2" action="{{ url_for('login') }}" method="post">
+            <h3><strong>Login</strong></h3>
+            <label for="input_cpf"> <strong>CPF:</strong> </label>
+            <input id="input_cpf" placeholder="Digite o CPF" type="number" name="form-cpf" class="form-control w-100">
+
+            <label for="input_senha"><strong>Senha:</strong></label>
+            <input id="input_senha" placeholder="Digite a senha" type="password" name="form-senha"
+                   class="form-control w-100">
+
+
+            <button type="submit" class="btn1 btn-info"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
+            <!--            <a class="btn btn-danger" onclick="limpaInputsLogin()">Limpar</a>-->
+            <br>
+
+            <button type="button" class="btn2 btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                    class="bi bi-file-person"></i>
+                Cadastre-se
+            </button>
+        </form>
+        <p><strong>Ainda não tem uma conta?</strong></p>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastre-se</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-cadastro" class="funcionario" action="{{url_for('funcionarios')}}" method="post">
+                    <label for="input_nome">Nome:</label>
+                    <input id="input_nome" placeholder="Digite o nome" type="text" name="form-nome"
+                           class="form-control w-100">
+
+                    <label for="input_data">Data de nascimento:</label>
+                    <input id="input_data" placeholder="Digite a data de nascimento" type="date" name="form-nascimento"
+                           class="form-control w-100">
+
+                    <label for="input_CPFzinho">CPF:</label>
+                    <input id="input_CPFzinho" placeholder="Digite o cpf" type="number" name="form-cpf"><br><br>
+
+                    <label for="input_email">Email:</label>
+                    <input id="input_email" placeholder="Digite o email" type="text" name="form-email"><br><br>
+
+                    <label for="input_senhinha">Senha:</label>
+                    <input id="input_senhinha" placeholder="Digite a senha" type="password"
+                           name="form-senha"><br><br>
+
+                    <label for="input_cargo">Cargo:</label>
+                    <input id="input_cargo" placeholder="Digite o Cargo" type="text" name="form-cargo"
+                           class="form-control w-100">
+
+                    <label for="input_salario">Salário:</label>
+                    <input id="input_salario" placeholder="Digite o salário" type="number" name="form-salario"
+                           class="form-control w-100">
+
+
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-file-person"></i> Cadastre-se</button>
+                    <!--                    <a class="btn btn-danger" onclick="limpaInputsCadastro()">Limpar</a>-->
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
