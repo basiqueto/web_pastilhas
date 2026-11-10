@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h2>Bem-vindo ao Sistema de Gestão</h2><br><br>
+
+<div class="row justify-content-center gap-4">
+    <a class=" mt-2" href="{{ url_for('pastilhas') }}">
+        <div class="col-md-4">
+
+            <div class="card shadow text-center p-4">
+                <h4>⚙️ Pastilhas</h4>
+                <p>Cadastre, edite e remova</p>
+                <a>Acessar Pastilha</a>
+            </div>
+
+        </div>
+    </a>
+
+    <div class="col-md-4">
+        <div class="card shadow text-center p-4">
+            <h4>👷 Fabricantes</h4>
+            <p>Cadastre, edite e remova</p>
+            <a class="btn btn-primary mt-2" href="{{ url_for('fabricantes') }}">Acessar fabricante</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow text-center p-4">
+            <h4>📦 Fornecedores</h4>
+            <p>Cadastre, edite e remova</p>
+            <a class="btn btn-primary mt-2" href="{{ url_for('fornecedores') }}">Acessar fornecedor</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
