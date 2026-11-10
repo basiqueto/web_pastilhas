@@ -16,14 +16,18 @@
 <body>
 <div class="main">
     <div class="menu">
-        <img  src="../static/img/logo.png" height="100" width="290"/>
-        <ul>
-            <li><a href="{{url_for('login')}}">ENTRAR</a></li>
-            <li><a href="{{url_for('fabricantes')}}">NOVO FABRICANTE</a></li>
-            <li><a href="{{url_for('fornecedores')}}">NOVO FORNECEDOR</a></li>
-        </ul>
-
+        <img src="../static/img/logo.png" height="100" width="290"/>
+        <!-- Menu Superior  (Só aparece se o usuário estiver logado) -->
+<!--        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">-->
+<!--            <div class="container">-->
+<!--                <div class="d-flex align-items-center">-->
+<!--                    &lt;!&ndash; Requisito 5.1.1: Exibir nome do usuário logado &ndash;&gt;-->
+<!--                    <span class="text-white me-3">Olá</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </nav>-->
     </div>
+
 
     <div class="conteudo">
         {% block conteudo %}

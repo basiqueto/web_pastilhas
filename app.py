@@ -3,41 +3,124 @@ from flask import Flask, render_template, url_for, flash, request, redirect
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import select, and_, func
 
+from routes import post_fabricante, post_fornecedor, post_pastilha, post_funcionario, get_pastilha
+
 app = Flask(__name__)
 # mover para .env
 app.config['SECRET_KEY'] = '1234'
+
 
 @app.route('/')
 def home():
     return render_template("home.html")
 
-@app.route('/cadastro_func')
+@app.route('/dashboard')
+def dashboard():
+    return render_template("dashboard.html")
+
+
+@app.route('/funcionarios', methods=['GET', 'POST'])
 def funcionarios():
-    return render_template("cadastro_func.html")
+    if request.method == 'POST':
+        nome = request.form.get('form-nome')
+        email = request.form.get('form-email')
+        senha = request.form.get('form-senha')
 
-@app.route('/pastilhas')
+        if not nome or not email or not senha:
+            print('Valores não encontrados')
+            return redirect(url_for('funcionarios'))
+        try:
+            print("Cadastrando funcionario...")
+            post_funcionario(nome=nome, email=email, senha=senha)
+            return redirect(url_for('pastilhas'))
+
+        except Exception as e:
+            print(f'ERROR: {e}')
+            redirect(url_for('funcionarios'))
+
+    return render_template("login.html")
+
+
+@app.route('/pastilhas', methods=['GET', 'POST'])
 def pastilhas():
-    return render_template("pastilhas.html")
+    if request.method == 'POST':
+        aplicacao = request.form.get('form-uso')
+        material = request.form.get('form-material')
+        cor = request.form.get('form-cor')
+        fornecedor_id = request.form.get('form-fornecedor_id')
 
-@app.route('/fornecedores')
+        if not aplicacao or not material or not cor:
+            print('Valores não encontrados')
+            return redirect(url_for('pastilhas'))
+        try:
+            print("Cadastrando empresa...")
+            post_pastilha(aplicacao=aplicacao, material=material, cor=cor, fornecedor_id=fornecedor_id)
+            return redirect(url_for('pastilhas'))
+
+        except Exception as e:
+            print(f'ERROR: {e}')
+            redirect(url_for('pastilhas'))
+
+    pastilhas_resultado = get_pastilha()
+    print("foi", pastilhas_resultado)
+    return render_template("pastilhas.html", lista_pastilhas=pastilhas_resultado["pastilha"])
+
+
+@app.route('/fornecedores', methods=['GET', 'POST'])
 def fornecedores():
+    if request.method == 'POST':
+        nome = request.form.get('form-nome')
+        email = request.form.get('form-email')
+        cnpj = request.form.get('form-cnpj')
+
+        if not nome or not cnpj or not email:
+            print('Valores não encontrados')
+            return redirect(url_for('fornecedores'))
+        try:
+            print("Cadastrando empresa...")
+            post_fornecedor(nome=nome, email=email, cnpj=cnpj)
+            return redirect(url_for('pastilhas'))
+
+        except Exception as e:
+            print(f'ERROR: {e}')
+            redirect(url_for('fornecedores'))
+
     return render_template("cadastro_forn.html")
 
-@app.route('/fabricantes')
+
+@app.route('/fabricantes', methods=['GET', 'POST'])
 def fabricantes():
+    if request.method == 'POST':
+        empresa = request.form.get('form-empresa')
+        cnpj = request.form.get('form-cnpj')
+
+        if not empresa or not cnpj:
+            print('Valores não encontrados')
+            return redirect(url_for('fabricantes'))
+        try:
+            print("Cadastrando empresa...")
+            post_fabricante(nome=empresa, cnpj=cnpj)
+            return redirect(url_for('pastilhas'))
+
+        except Exception as e:
+            print(f'ERROR: {e}')
+            redirect(url_for('fabricantes'))
+
     return render_template("cadastro_fabr.html")
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        cpf = request.form.get('form-cpf')
+        email = request.form.get('form-email')
         senha = request.form.get('form-senha')
 
-        print(cpf, senha)
+        # print(email, senha)
 
         return redirect(url_for('pastilhas'))
 
     return render_template("login.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)

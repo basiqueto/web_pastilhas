@@ -32,21 +32,11 @@
                     <input id="input_cor" placeholder="Digite a cor" type="text" name="form-cor"
                            class="form-control w-100">
 
-                    <label for="menu_fabricante">Fabricante:</label>
-                    <select id="menu_fabricante">
-                        <optgroup>
-                            <option>1</option>
-                            <option>2</option>
-                        </optgroup>
-                    </select>
+                    <label for="input_fornecedor"> Fornecedor ID: </label>
+                    <input id="input_fornecedor" placeholder="Digite o fornecedor" type="number"
+                           name="form-fornecedor_id"
+                           class="form-control w-100">
 
-                   <label for="menu_fornecedor">Fornecedor:</label>
-                    <select id="menu_fornecedor">
-                        <optgroup>
-                            <option>1</option>
-                            <option>2</option>
-                        </optgroup>
-                    </select>
 
                     <button type="submit" class="btn btn-info">Cadastrar</button>
                 </form>
@@ -62,14 +52,33 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Código Rastreio</th>
         <th scope="col">Aplicação/Uso</th>
         <th scope="col">Material</th>
         <th scope="col">Cor</th>
-        <th scope="col">Fabricante</th>
+        <th scope="col">Data Criação</th>
         <th scope="col">Fornecedor</th>
     </tr>
     </thead>
+    <tbody>
+
+    {% for pastilha in lista_pastilhas %}
+
+        <tr>
+            <td>{{ pastilha.codigo_rastreio }}</td>
+            <td>{{ pastilha.aplicacao }}</td>
+            <td>{{ pastilha.material }}</td>
+            <td>{{ pastilha.cor }}</td>
+            <td>{{ pastilha.criado_em }}</td>
+            <td>{{ pastilha.fornecedor }}</td>
+            <td>
+                <a href=""><i class="bi bi-pencil"></i> </a>
+                <a href=""><i class="bi bi-trash text-danger"></i> </a>
+            </td>
+    {% endfor %}
+        </tr>
+
+    </tbody>
 </table>
 
 

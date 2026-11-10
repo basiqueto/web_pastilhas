@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: "Cambria Math";
-    background-color: #9899a6;
+    font-family: "Dubai";
+    background-color: #d9eddf;
 }
 
 .main {
@@ -23,7 +23,7 @@ body {
 
 .menu {
     /* Linha fina clara na parte inferior do menu */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 2px solid #80be97;
     height: 100px;
     display: flex;
 }
@@ -47,14 +47,14 @@ body {
     text-decoration: none;
     font-weight: bold;
     color: white;
-    background-color: #967200;
+    background-color: #0075a5;
     padding: 15px;
     margin: 50px;
     border-radius: 5px;
 }
 
+
 .frase {
-    font-family: "Cambria Math";
     font-size: 30px;
     color: black;
     display: flex;
@@ -68,6 +68,7 @@ body {
 h2 {
     color: #2d304d;
 }
+
 
 label {
     display: flex;

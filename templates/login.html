@@ -1,24 +1,46 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+    <!--Link do BOOTSTRAP - antes do CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--Link de Icons do Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!--Link do CSS-->
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
 
-{% block conteudo %}
+<body>
+
+
+<div class="menu">
+    <img src="../static/img/logo.png" height="100" width="290"/>
+    <ul>
+        <li><a href="{{url_for('home')}}">VOLTAR</a></li>
+    </ul>
+</div>
+
 
 <div class="pai_login">
     <div class="card_login">
         <form id="form-login" class="form-login2" action="{{ url_for('login') }}" method="post">
             <h3><strong>Login</strong></h3>
-            <label for="input_cpf"> <strong>CPF:</strong> </label>
-            <input id="input_cpf" placeholder="Digite o CPF" type="number" name="form-cpf" class="form-control w-100">
+            <label for="input_email"> <strong>Email:</strong> </label>
+            <input id="input_email" placeholder="Digite o email" type="text" name="form-email"
+                   class="form-control w-100">
 
             <label for="input_senha"><strong>Senha:</strong></label>
             <input id="input_senha" placeholder="Digite a senha" type="password" name="form-senha"
                    class="form-control w-100">
 
 
-            <button type="submit" class="btn1 btn-info"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
-            <!--            <a class="btn btn-danger" onclick="limpaInputsLogin()">Limpar</a>-->
+            <button type="submit" class="btn1 btn-info" href="{{ url_for('dashboard') }}">Entrar</button>
+
             <br>
 
-            <button type="button" class="btn2 btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+            <button type="button" class="btn2 btn-primary" data-bs-toggle="modal" data-bs-target="#modal-login"><i
                     class="bi bi-file-person"></i>
                 Cadastre-se
             </button>
@@ -29,7 +51,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="modal-login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -43,31 +65,16 @@
                     <input id="input_nome" placeholder="Digite o nome" type="text" name="form-nome"
                            class="form-control w-100">
 
-                    <label for="input_data">Data de nascimento:</label>
-                    <input id="input_data" placeholder="Digite a data de nascimento" type="date" name="form-nascimento"
-                           class="form-control w-100">
 
-                    <label for="input_CPFzinho">CPF:</label>
-                    <input id="input_CPFzinho" placeholder="Digite o cpf" type="number" name="form-cpf"><br><br>
-
-                    <label for="input_email">Email:</label>
-                    <input id="input_email" placeholder="Digite o email" type="text" name="form-email"><br><br>
+                    <label for="input_email1">Email:</label>
+                    <input id="input_email1" placeholder="Digite o email" type="text" name="form-email"><br><br>
 
                     <label for="input_senhinha">Senha:</label>
                     <input id="input_senhinha" placeholder="Digite a senha" type="password"
                            name="form-senha"><br><br>
 
-                    <label for="input_cargo">Cargo:</label>
-                    <input id="input_cargo" placeholder="Digite o Cargo" type="text" name="form-cargo"
-                           class="form-control w-100">
 
-                    <label for="input_salario">Salário:</label>
-                    <input id="input_salario" placeholder="Digite o salário" type="number" name="form-salario"
-                           class="form-control w-100">
-
-
-                    <button type="submit" class="btn btn-primary"><i class="bi bi-file-person"></i> Cadastre-se</button>
-                    <!--                    <a class="btn btn-danger" onclick="limpaInputsCadastro()">Limpar</a>-->
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-file-person"></i>Cadastre-se</button>
 
                 </form>
             </div>
@@ -75,5 +82,9 @@
     </div>
 </div>
 
-
-{% endblock %}
+<!-- Link do javascript para o bootstrap - Sempre no final do body-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
