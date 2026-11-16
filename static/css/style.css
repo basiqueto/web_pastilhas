@@ -9,6 +9,13 @@ body {
     background-color: #d9eddf;
 }
 
+a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .main {
     height: 100vh;
     max-height: 100vh;
@@ -119,7 +126,7 @@ input {
 }
 
 .btn1 {
-    background-color: dodgerblue;
+    background-color: #0075a5;
     height: 35px;
     width: 200px;
     border-radius: 10px;

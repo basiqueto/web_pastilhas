@@ -3,7 +3,8 @@ from flask import Flask, render_template, url_for, flash, request, redirect
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import select, and_, func
 
-from routes import post_fabricante, post_fornecedor, post_pastilha, post_funcionario, get_pastilha
+from routes import post_fabricante, post_fornecedor, post_pastilha, post_funcionario, get_pastilha, get_fornecedor, \
+    get_fabricante
 
 app = Flask(__name__)
 # mover para .env
@@ -14,9 +15,13 @@ app.config['SECRET_KEY'] = '1234'
 def home():
     return render_template("home.html")
 
+
 @app.route('/dashboard')
 def dashboard():
-    return render_template("dashboard.html")
+    pastilhas_resultado = get_pastilha()
+    fabricantes_resultado = get_fabricante()
+    return render_template("dashboard.html", qtd_pastilhas=len(pastilhas_resultado["pastilha"]),
+                                                               qtd_fabricantes=len(fabricantes_resultado["fabricante"]))
 
 
 @app.route('/funcionarios', methods=['GET', 'POST'])
@@ -106,7 +111,9 @@ def fabricantes():
             print(f'ERROR: {e}')
             redirect(url_for('fabricantes'))
 
-    return render_template("cadastro_fabr.html")
+    fabricantes_resultado = get_fabricante()
+    print("foi", fabricantes_resultado)
+    return render_template("cadastro_fabr.html", lista_pastilhas=fabricantes_resultado["pastilha"])
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -123,4 +130,4 @@ def login():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5051)

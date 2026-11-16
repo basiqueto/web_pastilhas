@@ -1,6 +1,6 @@
 import requests
 
-endereco = "http://10.135.232.29:5001"
+endereco = "http://10.135.232.31:5004"
 
 def get_pastilha():
     url = f"{endereco}/listar_pastilha"
