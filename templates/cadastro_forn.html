@@ -51,8 +51,25 @@
         <th scope="col">Nome</th>
         <th scope="col">CNPJ</th>
         <th scope="col">Email</th>
+        <th scope="col">Criado em</th>
     </tr>
     </thead>
+
+    {% for fornecedor in listar_fornecedor %}
+
+    <tr>
+        <td>{{ fornecedor.id }}</td>
+        <td>{{ fornecedor.nome }}</td>
+        <td>{{ fornecedor.cnpj }}</td>
+        <td>{{ fornecedor.email }}</td>
+        <td>{{ fornecedor.criado_em }}</td>
+        <td>
+            <a href=""><i class="bi bi-pencil"></i> </a>
+            <a href=""><i class="bi bi-trash text-danger"></i> </a>
+        </td>
+        {% endfor %}
+    </tr>
+
 </table>
 
 {% endblock %}

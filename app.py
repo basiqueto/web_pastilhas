@@ -20,8 +20,10 @@ def home():
 def dashboard():
     pastilhas_resultado = get_pastilha()
     fabricantes_resultado = get_fabricante()
+    fornecedores_resultado = get_fornecedor()
     return render_template("dashboard.html", qtd_pastilhas=len(pastilhas_resultado["pastilha"]),
-                                                               qtd_fabricantes=len(fabricantes_resultado["fabricante"]))
+                           qtd_fabricantes=len(fabricantes_resultado["fabricante"]),
+                           qtd_fornecedores=len(fornecedores_resultado["fornecedor"]))
 
 
 @app.route('/funcionarios', methods=['GET', 'POST'])
@@ -68,7 +70,7 @@ def pastilhas():
 
     pastilhas_resultado = get_pastilha()
     print("foi", pastilhas_resultado)
-    return render_template("pastilhas.html", lista_pastilhas=pastilhas_resultado["pastilha"])
+    return render_template("pastilhas.html", listar_pastilha=pastilhas_resultado["pastilha"])
 
 
 @app.route('/fornecedores', methods=['GET', 'POST'])
@@ -90,7 +92,9 @@ def fornecedores():
             print(f'ERROR: {e}')
             redirect(url_for('fornecedores'))
 
-    return render_template("cadastro_forn.html")
+    fornecedores_resultado = get_fornecedor()
+    print("foi", fornecedores_resultado)
+    return render_template("cadastro_forn.html", listar_fornecedor=fornecedores_resultado["fornecedor"])
 
 
 @app.route('/fabricantes', methods=['GET', 'POST'])
@@ -113,7 +117,7 @@ def fabricantes():
 
     fabricantes_resultado = get_fabricante()
     print("foi", fabricantes_resultado)
-    return render_template("cadastro_fabr.html", lista_pastilhas=fabricantes_resultado["pastilha"])
+    return render_template("cadastro_fabr.html", listar_fabricante=fabricantes_resultado["fabricante"])
 
 
 @app.route('/login', methods=['GET', 'POST'])

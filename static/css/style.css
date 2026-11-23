@@ -144,3 +144,9 @@ p {
     text-align: center;
 }
 
+.card-dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+

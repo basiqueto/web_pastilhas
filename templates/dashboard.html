@@ -4,7 +4,7 @@
 
 <h2>Bem-vindo ao Sistema de Gestão</h2><br><br>
 
-<div class="row justify-content-center gap-4">
+<div class="card-dashboard row justify-content-center gap-4">
     <a class="mt-2" href="{{ url_for('pastilhas') }}">
         <div class="col-md-4">
             <div class="card shadow text-center p-4">
@@ -24,11 +24,11 @@
         </div>
     </a>
 
-    <a class="mt-2" href="{{ url_for('fabricantes') }}">
+    <a class="mt-2" href="{{ url_for('fornecedores') }}">
         <div class="col-md-4">
             <div class="card shadow text-center p-4">
                 <h4>📦 Fornecedores</h4>
-                <p>500</p>
+                <p>{{ qtd_fornecedores }}</p>
             </div>
         </div>
     </a>

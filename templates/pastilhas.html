@@ -52,6 +52,7 @@
 <table class="table">
     <thead>
     <tr>
+        <th scope="col">ID</th>
         <th scope="col">Código Rastreio</th>
         <th scope="col">Aplicação/Uso</th>
         <th scope="col">Material</th>
@@ -62,15 +63,16 @@
     </thead>
     <tbody>
 
-    {% for pastilha in lista_pastilhas %}
+    {% for pastilha in listar_pastilha %}
 
     <tr>
-        <td>{{ pastilha.codigo_rastreio }}</td>
-        <td>{{ pastilha.aplicacao }}</td>
-        <td>{{ pastilha.material }}</td>
-        <td>{{ pastilha.cor }}</td>
-        <td>{{ pastilha.criado_em }}</td>
-        <td>{{ pastilha.fornecedor }}</td>
+        <td>{{ pastilha.pastilha.id }}</td>
+        <td>{{ pastilha.pastilha.codigo_rastreio }}</td>
+        <td>{{ pastilha.pastilha.tipo_aplicacao }}</td>
+        <td>{{ pastilha.pastilha.material }}</td>
+        <td>{{ pastilha.pastilha.cor }}</td>
+        <td>{{ pastilha.pastilha.criado_em }}</td>
+        <td>{{ pastilha.pastilha.fornecedor }}</td>
         <td>
             <a href=""><i class="bi bi-pencil"></i> </a>
             <a href=""><i class="bi bi-trash text-danger"></i> </a>

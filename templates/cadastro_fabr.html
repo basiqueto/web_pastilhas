@@ -46,8 +46,23 @@
         <th scope="col">ID</th>
         <th scope="col">Nome</th>
         <th scope="col">CNPJ</th>
+        <th scope="col">Criado em</th>
     </tr>
     </thead>
+
+    {% for fabricante in listar_fabricante %}
+
+    <tr>
+        <td>{{ fabricante.id }}</td>
+        <td>{{ fabricante.nome }}</td>
+        <td>{{ fabricante.cnpj }}</td>
+        <td>{{ fabricante.criado_em }}</td>
+        <td>
+            <a href=""><i class="bi bi-pencil"></i> </a>
+            <a href=""><i class="bi bi-trash text-danger"></i> </a>
+        </td>
+        {% endfor %}
+    </tr>
 
 </table>
 
