@@ -4,34 +4,61 @@
 
 <h2>Bem-vindo ao Sistema de Gestão</h2><br><br>
 
-<div class="card-dashboard row justify-content-center gap-4">
-    <a class="mt-2" href="{{ url_for('pastilhas') }}">
-        <div class="col-md-4">
+<div class="card-dashboard justify-content-center gap-1">
+    <a class="mt-2 w-100" href="{{ url_for('pastilhas') }}">
+        <div class="">
             <div class="card shadow text-center p-4">
                 <h4>⚙️ Pastilhas</h4>
-                <p>{{ qtd_pastilhas }}</p>
+                <p class="fs-2">{{ qtd_pastilhas }}</p>
             </div>
 
         </div>
     </a>
 
-    <a class="mt-2" href="{{ url_for('fabricantes') }}">
-        <div class="col-md-4">
+    <a class="mt-2 w-100" href="{{ url_for('fabricantes') }}">
+        <div class="">
             <div class="card shadow text-center p-4">
                 <h4>👷 Fabricantes</h4>
-                <p>{{ qtd_fabricantes }}</p>
+                <p class="fs-2">{{ qtd_fabricantes }}</p>
             </div>
         </div>
     </a>
 
-    <a class="mt-2" href="{{ url_for('fornecedores') }}">
-        <div class="col-md-4">
+    <a class="mt-2 w-100" href="{{ url_for('fornecedores') }}">
+        <div class="">
             <div class="card shadow text-center p-4">
-                <h4>📦 Fornecedores</h4>
-                <p>{{ qtd_fornecedores }}</p>
+                 <h4>📦 Fornecedores</h4>
+                <p class="fs-2">{{ qtd_fornecedores }}</p>
             </div>
         </div>
     </a>
+</div>
+
+<div class="d-flex justify-content-between align-items-center p-2">
+    <h1 class="ms-2">Movimentações</h1>
+</div>
+
+<div class="card-body">
+    <table class="table table-striped">
+        <thead class="table-primary">
+        <tr>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Pastilha ID</th>
+            <th scope="col">Entrada/Saída</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for movimentacao in movimentacoes %}
+
+        <tr>
+            <td>{{ movimentacao.movimento.quantidade }}</td>
+            <td>{{ movimentacao.pastilha }}</td>
+            <td>{{ movimentacao.movimento.tipo }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}

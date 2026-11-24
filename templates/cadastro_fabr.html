@@ -3,9 +3,14 @@
 {% block conteudo %}
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Novo Fabricante
-</button>
+<div class="d-flex justify-content-between align-items-center p-2">
+    <h1 class="ms-2">Fabricantes</h1>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Novo Fabricante
+    </button>
+
+</div>
 
 <!--Cadastro de NOVO FABRICANTE-->
 
@@ -20,16 +25,18 @@
             </div>
             <div class="modal-body">
                 <form class="form-cadastro2" action="{{ url_for('fabricantes')}}" method="post">
-                    <label for="input_nome">Nome:</label>
-                    <input id="input_nome" placeholder="Digite o nome" type="text" name="form-uso"
+                    <label for="input_nome">Nome da empresa:</label>
+                    <input id="input_nome" placeholder="Digite o nome" type="text" name="form-empresa"
                            class="form-control w-100">
 
                     <label for="input_cnpj">CNPJ:</label>
-                    <input id="input_cnpj" placeholder="Digite o CNPJ" type="number" name="form-material"
+                    <input id="input_cnpj" placeholder="Digite o CNPJ" type="number" name="form-cnpj"
                            class="form-control w-100">
 
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
 
-                    <button type="submit" class="btn btn-info">Cadastrar</button>
                 </form>
 
             </div>
@@ -40,31 +47,29 @@
     </div>
 </div>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">CNPJ</th>
-        <th scope="col">Criado em</th>
-    </tr>
-    </thead>
+<div class="card-body">
+    <table class="table table-striped">
+        <thead class="table-primary">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Criado em</th>
+        </tr>
+        </thead>
 
-    {% for fabricante in listar_fabricante %}
+        {% for fabricante in listar_fabricante %}
 
-    <tr>
-        <td>{{ fabricante.id }}</td>
-        <td>{{ fabricante.nome }}</td>
-        <td>{{ fabricante.cnpj }}</td>
-        <td>{{ fabricante.criado_em }}</td>
-        <td>
-            <a href=""><i class="bi bi-pencil"></i> </a>
-            <a href=""><i class="bi bi-trash text-danger"></i> </a>
-        </td>
-        {% endfor %}
-    </tr>
+        <tr>
+            <td>{{ fabricante.id }}</td>
+            <td>{{ fabricante.nome }}</td>
+            <td>{{ fabricante.cnpj }}</td>
+            <td>{{ fabricante.criado_em }}</td>
+            {% endfor %}
+        </tr>
 
-</table>
+    </table>
 
 
-{% endblock %}
+    {% endblock %}
+</div>

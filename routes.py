@@ -1,6 +1,6 @@
 import requests
 
-endereco = "http://10.135.232.45:5004"
+endereco = "http://10.135.232.21:5004"
 
 def get_pastilha():
     url = f"{endereco}/listar_pastilha"
@@ -33,12 +33,19 @@ def get_funcionario():
 
     return result_funcionario.json()
 
+def get_movimentacao():
+    url = f"{endereco}/listar_movimentacao"
 
-def post_pastilha(aplicacao, cor, material, fornecedor_id):
+    result_movimentacao = requests.get(url)
+
+    return result_movimentacao.json()
+
+
+def post_pastilha(tipo_aplicacao, cor, material, fornecedor_id):
     url = f"{endereco}/cadastro_pastilha"
 
     dados = {
-        "aplicacao": aplicacao,
+        "tipo_aplicacao": tipo_aplicacao,
         "cor": cor,
         "material": material,
         "fornecedor_id": fornecedor_id
@@ -89,6 +96,19 @@ def post_funcionario(nome, email, senha):
     result_funcionario = requests.post(url, json=dados)
 
     return result_funcionario.json()
+
+def post_movimentacao(quantidade, pastilha_id, tipo):
+    url = f"{endereco}/cadastro_movimentacao"
+
+    dados = {
+        "quantidade": quantidade,
+        "pastilha_id": pastilha_id,
+        "tipo": tipo
+    }
+
+    result_movimentacao = requests.post(url, json=dados)
+
+    return result_movimentacao.json()
 
 
 
